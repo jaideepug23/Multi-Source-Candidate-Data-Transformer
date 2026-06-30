@@ -1,5 +1,7 @@
 # Multi-Source Candidate Data Transformer
 Open the [Multi-Source Candidate Data Transformer Web Application](https://multi-sourcecandidatedatatransforme.vercel.app).
+<img width="510" height="284" alt="image" src="https://github.com/user-attachments/assets/aa10e5ab-f153-4ceb-aa95-f635f229f980" />
+
 
 A Python-based candidate data transformation pipeline that consolidates candidate information from multiple heterogeneous sources (CSV, ATS JSON, recruiter notes, and optional GitHub profile URL) into a unified canonical profile. The system performs source detection, extraction, normalization, duplicate merging, provenance tracking, confidence scoring, and configurable output generation. A web interface is provided for easy execution, while the project can also be run locally. For implementation details, architecture, pipeline design, schema, merge policy, and assumptions, please refer to the design document included in this repository.
 
@@ -60,7 +62,8 @@ Sample files provided:
 4. Select the desired profile output format.
 
 
-5. (Optional) Configure the output: Select fields to include, rename output labels, choose normalization options, enable/disable confidence or provenance, and choose missing-value behavior.
+5. (Optional) Configure the output: Select fields to include, rename output labels, choose normalization options, enable/disable confidence or provenance, and choose missing-value behavior.  <img width="400" height="450" alt="image" src="https://github.com/user-attachments/assets/94891a3f-e007-4c95-b613-d380ffa857c2" />
+
 
 
 6. Click **Generate Candidate Profiles**.
