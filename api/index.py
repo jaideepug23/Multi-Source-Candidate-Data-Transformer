@@ -396,6 +396,9 @@ _FRONTEND_HTML = """<!doctype html>
     CANONICAL_FIELDS.forEach(function (f, idx) {
       var checkbox = fieldConfigBody.querySelector('.field-include[data-idx="' + idx + '"]');
       if (!checkbox || !checkbox.checked) return;
+      var renameInput = fieldConfigBody.querySelector(
+          '.field-rename[data-idx="' + idx + '"]'
+      );
       var normSelect = fieldConfigBody.querySelector('.field-normalize[data-idx="' + idx + '"]');
       var entry = {
       path: defaultOutputName(f.from),
