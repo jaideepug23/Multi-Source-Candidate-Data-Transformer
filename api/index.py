@@ -244,7 +244,6 @@ _FRONTEND_HTML = """<!doctype html>
           <label for="onMissingSelect">On Missing</label>
           <select id="onMissingSelect">
             <option value="null">Set to null</option>
-            <option value="omit">Omit field</option>
             <option value="error">Error out</option>
           </select>
           <div class="hint">Applies to every included field that isn't marked required.</div>
@@ -281,6 +280,15 @@ _FRONTEND_HTML = """<!doctype html>
   </section>
   <footer class="page-footer">
     Multi-Source Candidate Data Transformer &mdash; Workflow: Upload &rarr; Extract &rarr; Normalize &rarr; Merge &rarr; Generate Candidate Profile.
+    <p style="
+    text-align:center;
+    font-size:14px;
+    color:#666;
+    margin-top:8px;
+    margin-bottom:0;
+    ">
+    Made by Jaideep
+    </p>
   </footer>
 </div>
 <script>
