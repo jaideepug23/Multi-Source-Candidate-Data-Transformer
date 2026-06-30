@@ -176,6 +176,26 @@ _SKILL_ALIASES: dict[str, str] = {
     "node": "Node.js",
     "nodejs": "Node.js",
     "node.js": "Node.js",
+    # Web fundamentals
+    "css": "CSS",
+    "html": "HTML",
+    "css3": "CSS3",
+    "html5": "HTML5",
+    # Mobile / cross-platform
+    "swift": "Swift",
+    "kotlin": "Kotlin",
+    "react native": "React Native",
+    "android studio": "Android Studio",
+    "flutter": "Flutter",
+    "bootstrap": "Bootstrap",
+    # Backend / infra
+    "django": "Django",
+    "firebase": "Firebase",
+    # ML/data tooling
+    "keras": "Keras",
+    "anaconda": "Anaconda",
+    # Version control
+    "bitbucket": "Bitbucket",
     # Data
     "pandas": "Pandas",
     "numpy": "NumPy",
