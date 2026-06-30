@@ -30,9 +30,9 @@ The application utilizes a strict deterministic match-key clustering strategy vi
 1. Open the deployed application:
 ```
 https://multi-sourcecandidatedatatransforme.vercel.app
-Open the [Multi-Source Candidate Data Transformer Web Application](https://multi-sourcecandidatedatatransforme.vercel.app).
 
 ```
+Open the [Multi-Source Candidate Data Transformer Web Application](https://multi-sourcecandidatedatatransforme.vercel.app).
 
 
 2. Upload one or more supported input files from the repository (`samples/`) for testing.
