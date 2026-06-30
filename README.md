@@ -1,6 +1,5 @@
 # Multi-Source Candidate Data Transformer
-
-1. Open the [Multi-Source Candidate Data Transformer Web Application](https://multi-sourcecandidatedatatransforme.vercel.app).
+Open the [Multi-Source Candidate Data Transformer Web Application](https://multi-sourcecandidatedatatransforme.vercel.app).
 
 A Python-based candidate data transformation pipeline that consolidates candidate information from multiple heterogeneous sources (CSV, ATS JSON, recruiter notes, and optional GitHub profile URL) into a unified canonical profile. The system performs source detection, extraction, normalization, duplicate merging, provenance tracking, confidence scoring, and configurable output generation. A web interface is provided for easy execution, while the project can also be run locally. For implementation details, architecture, pipeline design, schema, merge policy, and assumptions, please refer to the design document included in this repository.
 
@@ -20,8 +19,6 @@ The application utilizes a strict deterministic match-key clustering strategy vi
 
 
 4. **Reshaped Projection:** Projects canonical documents onto dynamically assigned runtime layout structures (`default_config.json`, `custom_config.json`) utilizing subset filtering or value criteria.
-
-
 
 ---
 
@@ -199,29 +196,29 @@ Execute the comprehensive architectural regression testing platform to guarantee
 python -m pytest tests/ -v
 
 ```
+## Sample Output File
 
-or
-
-```bash
-pytest
-```[cite: 28]
+Available in the root directory: `out_default.json` and `out_custom.json`.
 
 ---
 
+
+
+
 ## Assumptions
 
-- Phone numbers are normalized to E.164 format[cite: 8, 28].
-- Bare 10-digit numbers are treated as Indian (+91) numbers by default[cite: 8, 28].
-- Candidate matching is deterministic using email, phone, GitHub, and LinkedIn identifiers[cite: 7, 28].
-- Recruiter notes are used as optional enrichment data[cite: 14, 28].
+- Phone numbers are normalized to E.164 format.
+- Bare 10-digit numbers are treated as Indian (+91) numbers by default.
+- Candidate matching is deterministic using email, phone, GitHub, and LinkedIn identifiers.
+- Recruiter notes are used as optional enrichment data.
 
 ---
 
 ## Current Limitations
 
-- OCR for scanned resumes is not implemented[cite: 28].
-- Live LinkedIn profile ingestion is not supported because LinkedIn provides no public API and automated scraping violates their Terms of Service[cite: 3, 28]. LinkedIn profile URLs stored in CSV or ATS datasets are preserved in the output schema[cite: 3].
-- Fuzzy or probabilistic candidate matching is not implemented[cite: 7, 28].
+- OCR for scanned resumes is not implemented.
+- Live LinkedIn profile ingestion is not supported because LinkedIn provides no public API and automated scraping violates their Terms of Service. LinkedIn profile URLs stored in CSV or ATS datasets are preserved in the output schema.
+- Fuzzy or probabilistic candidate matching is not implemented.
 
 ---
 
@@ -229,6 +226,6 @@ pytest
 
 Jaideep
 Department of Computer Science and Engineering
-NSUT, Delhi[cite: 28]
+NSUT, Delhi
 
 ```
