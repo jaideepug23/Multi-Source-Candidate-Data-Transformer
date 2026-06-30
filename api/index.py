@@ -1,5 +1,5 @@
 """
-api/index.py — Vercel Python serverless function (FastAPI app).
+api/index.py — Vercel Python function (FastAPI app).
 
 FIX: public/index.html is now embedded directly as a Python string constant
 (_FRONTEND_HTML) at the top of this file. This completely removes any
@@ -12,9 +12,18 @@ Endpoints:
   GET  /api       -> health check
   GET  /api/configs -> list available output configs
   POST /api/transform -> upload files + config, run pipeline, return JSON
+
+NEW: the UI now has a "Configure Output…" option which lets the user tick
+fields, rename them, set per-field normalization, choose on_missing
+behavior (null/omit/error), and toggle confidence/provenance — all without
+any code changes. The built config is sent as `config_json` (a JSON string)
+alongside `config="__configure__"`, validated server-side with the same
+`validate_config()` used for the two built-in presets, and fed straight
+into the existing `run_pipeline()`.
 """
 
 from __future__ import annotations
+import json
 import logging
 import sys
 import tempfile
@@ -131,7 +140,7 @@ _FRONTEND_HTML = """<!doctype html>
   .row { display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap; align-items: flex-end; }
   .field { flex: 1; min-width: 220px; }
   .field label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin-bottom: 6px; font-weight: 600; }
-  .field select, .field input[type="url"] { width: 100%; font-family: var(--sans); font-size: 14px; padding: 9px 10px; border: 1px solid var(--rule); border-radius: 2px; background: var(--paper); color: var(--ink); }
+  .field select, .field input[type="url"], .field input[type="text"] { width: 100%; font-family: var(--sans); font-size: 14px; padding: 9px 10px; border: 1px solid var(--rule); border-radius: 2px; background: var(--paper); color: var(--ink); }
   .field .hint { font-size: 11px; color: var(--ink-soft); margin-top: 5px; }
   button.run { font-family: var(--serif); font-weight: 700; font-size: 15px; background: var(--ink); color: var(--paper); border: none; border-radius: 2px; padding: 12px 24px; cursor: pointer; letter-spacing: 0.02em; }
   button.run:hover { background: var(--stamp-red); }
@@ -174,6 +183,12 @@ _FRONTEND_HTML = """<!doctype html>
   .pv-line .pv-field { color: var(--ink); }
   .pv-line .pv-source { color: var(--stamp-red); }
   footer.page-footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--rule); font-size: 12px; color: var(--ink-soft); text-align: center; }
+  #configurePanel table { margin-top: 4px; }
+  #configurePanel th { font-size: 10px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-soft); }
+  #configurePanel td, #configurePanel th { padding: 6px 6px; vertical-align: middle; }
+  #configurePanel tr + tr { border-top: 1px solid var(--rule); }
+  #configurePanel input[type="text"], #configurePanel select { padding: 5px 7px; font-size: 12px; }
+  #configurePanel .from-path { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
@@ -204,10 +219,49 @@ _FRONTEND_HTML = """<!doctype html>
         <select id="configSelect">
           <option value="default">Complete Profile</option>
           <option value="custom">Basic Profile</option>
+          <option value="__configure__">Configure Output&hellip;</option>
         </select>
         <div class="hint">Same engine, different runtime config &mdash; no code changes.</div>
       </div>
     </div>
+
+    <div class="intake" id="configurePanel" style="display:none; margin-top:20px; padding:22px;">
+      <h2>Configure Output</h2>
+      <p class="sub">Tick the fields to include, optionally rename them, set normalization, and choose what happens when a value is missing.</p>
+      <table id="fieldConfigTable" style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Include</th>
+            <th style="text-align:left;">Canonical field</th>
+            <th style="text-align:left;">Output name (rename)</th>
+            <th style="text-align:left;">Normalize</th>
+          </tr>
+        </thead>
+        <tbody id="fieldConfigBody"></tbody>
+      </table>
+      <div class="row">
+        <div class="field">
+          <label for="onMissingSelect">On Missing</label>
+          <select id="onMissingSelect">
+            <option value="null">Set to null</option>
+            <option value="omit">Omit field</option>
+            <option value="error">Error out</option>
+          </select>
+          <div class="hint">Applies to every included field that isn't marked required.</div>
+        </div>
+        <div class="field">
+          <label style="display:block; margin-bottom:8px;">
+            <input type="checkbox" id="includeConfidence" checked style="width:auto; margin-right:6px;" />
+            Include confidence
+          </label>
+          <label style="display:block;">
+            <input type="checkbox" id="includeProvenance" style="width:auto; margin-right:6px;" />
+            Include provenance
+          </label>
+        </div>
+      </div>
+    </div>
+
     <div class="row">
       <button class="run" id="runButton">Generate Candidate Profiles</button>
     </div>
@@ -245,6 +299,119 @@ _FRONTEND_HTML = """<!doctype html>
   var skippedBox = document.getElementById("skippedBox");
   var cardsContainer = document.getElementById("cardsContainer");
   var selectedFiles = [];
+
+  // ── Configure Output panel ────────────────────────────────────────────────
+  // Mirrors the canonical fields exposed by transformer/projector.py so the
+  // user can pick a subset, rename ("path"), set normalization, and choose
+  // on_missing / confidence / provenance — all client-side, no code changes.
+  var CANONICAL_FIELDS = [
+    { from: "candidate_id",        type: "string",   defaultOn: true,  normalizeOptions: [] },
+    { from: "full_name",           type: "string",   defaultOn: true,  normalizeOptions: [] },
+    { from: "emails",              type: "string[]", defaultOn: true,  normalizeOptions: [] },
+    { from: "phones",              type: "string[]", defaultOn: true,  normalizeOptions: ["E164"] },
+    { from: "location.city",       type: "string",   defaultOn: true,  normalizeOptions: [] },
+    { from: "location.region",     type: "string",   defaultOn: true,  normalizeOptions: [] },
+    { from: "location.country",    type: "string",   defaultOn: true,  normalizeOptions: ["ISO2"] },
+    { from: "links.linkedin",      type: "string",   defaultOn: true,  normalizeOptions: [] },
+    { from: "links.github",        type: "string",   defaultOn: true,  normalizeOptions: [] },
+    { from: "links.portfolio",     type: "string",   defaultOn: true,  normalizeOptions: [] },
+    { from: "headline",            type: "string",   defaultOn: true,  normalizeOptions: [] },
+    { from: "years_experience",    type: "number",   defaultOn: true,  normalizeOptions: [] },
+    { from: "skills[].name",       type: "string[]", defaultOn: true,  normalizeOptions: ["canonical"] },
+    { from: "experience",          type: "object",   defaultOn: true,  normalizeOptions: [] },
+    { from: "education",           type: "object",   defaultOn: true,  normalizeOptions: [] }
+  ];
+
+  function defaultOutputName(fromPath) {
+    // "skills[].name" -> "skills", "emails" -> "emails", "location.city" -> "location.city"
+    return fromPath.replace(/\\[\\]\\.[A-Za-z_][A-Za-z0-9_]*$/, function (m) {
+      return "";
+    }).replace(/\\[\\d*\\]/g, "");
+  }
+
+  var configurePanel = document.getElementById("configurePanel");
+  var fieldConfigBody = document.getElementById("fieldConfigBody");
+  var onMissingSelect = document.getElementById("onMissingSelect");
+  var includeConfidenceEl = document.getElementById("includeConfidence");
+  var includeProvenanceEl = document.getElementById("includeProvenance");
+
+  function buildFieldConfigRows() {
+    fieldConfigBody.innerHTML = "";
+    CANONICAL_FIELDS.forEach(function (f, idx) {
+      var tr = document.createElement("tr");
+
+      var tdCheck = document.createElement("td");
+      var checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.checked = !!f.defaultOn;
+      checkbox.dataset.idx = String(idx);
+      checkbox.className = "field-include";
+      checkbox.style.width = "auto";
+      tdCheck.appendChild(checkbox);
+
+      var tdFrom = document.createElement("td");
+      tdFrom.className = "from-path";
+      tdFrom.textContent = f.from;
+
+      var tdRename = document.createElement("td");
+      var renameInput = document.createElement("input");
+      renameInput.type = "text";
+      renameInput.value = defaultOutputName(f.from) || f.from;
+      renameInput.dataset.idx = String(idx);
+      renameInput.className = "field-rename";
+      renameInput.style.width = "100%";
+      tdRename.appendChild(renameInput);
+
+      var tdNorm = document.createElement("td");
+      var normSelect = document.createElement("select");
+      normSelect.dataset.idx = String(idx);
+      normSelect.className = "field-normalize";
+      var noneOpt = document.createElement("option");
+      noneOpt.value = "";
+      noneOpt.textContent = "\\u2014";
+      normSelect.appendChild(noneOpt);
+      f.normalizeOptions.forEach(function (n) {
+        var opt = document.createElement("option");
+        opt.value = n;
+        opt.textContent = n;
+        normSelect.appendChild(opt);
+      });
+      tdNorm.appendChild(normSelect);
+
+      tr.appendChild(tdCheck);
+      tr.appendChild(tdFrom);
+      tr.appendChild(tdRename);
+      tr.appendChild(tdNorm);
+      fieldConfigBody.appendChild(tr);
+    });
+  }
+  buildFieldConfigRows();
+
+  configSelect.addEventListener("change", function () {
+    configurePanel.style.display = configSelect.value === "__configure__" ? "block" : "none";
+  });
+
+  function buildCustomConfigFromPanel() {
+    var fields = [];
+    CANONICAL_FIELDS.forEach(function (f, idx) {
+      var checkbox = fieldConfigBody.querySelector('.field-include[data-idx="' + idx + '"]');
+      if (!checkbox || !checkbox.checked) return;
+      var renameInput = fieldConfigBody.querySelector('.field-rename[data-idx="' + idx + '"]');
+      var normSelect = fieldConfigBody.querySelector('.field-normalize[data-idx="' + idx + '"]');
+      var outPath = (renameInput.value || "").trim() || defaultOutputName(f.from) || f.from;
+      var entry = { path: outPath, from: f.from, type: f.type };
+      if (f.from === "candidate_id") entry.required = true;
+      if (normSelect.value) entry.normalize = normSelect.value;
+      fields.push(entry);
+    });
+    return {
+      fields: fields,
+      include_confidence: includeConfidenceEl.checked,
+      include_provenance: includeProvenanceEl.checked,
+      on_missing: onMissingSelect.value
+    };
+  }
+
   function renderFileList() {
     fileListEl.innerHTML = "";
     selectedFiles.forEach(function (file, idx) {
@@ -410,6 +577,13 @@ _FRONTEND_HTML = """<!doctype html>
       setStatus('Add at least one file or a GitHub URL first.', true);
       return;
     }
+    if (configSelect.value === '__configure__') {
+      var hasAnyField = fieldConfigBody.querySelectorAll('.field-include:checked').length > 0;
+      if (!hasAnyField) {
+        setStatus('Tick at least one field in Configure Output.', true);
+        return;
+      }
+    }
     runButton.disabled = true;
     setStatus('Generating candidate profiles \\u2014 this can take a few seconds\\u2026');
     resultsSection.style.display = 'none';
@@ -417,6 +591,9 @@ _FRONTEND_HTML = """<!doctype html>
     var formData = new FormData();
     selectedFiles.forEach(function (f) { formData.append('files', f, f.name); });
     formData.append('config', configSelect.value);
+    if (configSelect.value === '__configure__') {
+      formData.append('config_json', JSON.stringify(buildCustomConfigFromPanel()));
+    }
     if (githubUrl) formData.append('github_url', githubUrl);
     fetch('/api/transform', { method: 'POST', body: formData })
       .then(function (resp) {
@@ -485,6 +662,10 @@ _CUSTOM_CONFIG = {
 
 _CONFIGS = {"default": _DEFAULT_CONFIG, "custom": _CUSTOM_CONFIG}
 
+# Sentinel value sent by the frontend's "Configure Output…" option. When the
+# client picks this, the actual config travels separately in `config_json`.
+_CONFIGURE_SENTINEL = "__configure__"
+
 _ALLOWED_EXTENSIONS = {".csv", ".json", ".pdf", ".docx"}
 
 # ─── FastAPI app ──────────────────────────────────────────────────────────────
@@ -517,22 +698,44 @@ def health() -> dict:
 
 @app.get("/api/configs")
 def list_configs() -> dict:
-    return {"configs": list(_CONFIGS.keys())}
+    return {"configs": list(_CONFIGS.keys()), "configurable": _CONFIGURE_SENTINEL}
 
 
 @app.post("/api/transform")
 async def transform(
     files: list[UploadFile] = File(...),
     config: str = Form("default"),
+    config_json: Optional[str] = Form(None),
     github_url: Optional[str] = Form(None),
 ) -> JSONResponse:
-    if config not in _CONFIGS:
-        raise HTTPException(status_code=400, detail=f"Unknown config '{config}'. Choose: {list(_CONFIGS)}.")
+    # ── Resolve which output config to use ──────────────────────────────────
+    if config == _CONFIGURE_SENTINEL:
+        # User-built config from the "Configure Output…" panel.
+        if not config_json or not config_json.strip():
+            raise HTTPException(
+                status_code=400,
+                detail="config_json is required when config='__configure__'.",
+            )
+        try:
+            chosen_config = json.loads(config_json)
+        except json.JSONDecodeError as e:
+            raise HTTPException(status_code=400, detail=f"Invalid config_json: {e}")
 
-    chosen_config = _CONFIGS[config]
-    problems = validate_config(chosen_config)
-    if problems:
-        raise HTTPException(status_code=500, detail=f"Internal config error: {problems}")
+        problems = validate_config(chosen_config)
+        if problems:
+            # This is user-supplied input, so a bad shape is a 400, not a 500.
+            raise HTTPException(status_code=400, detail=f"Invalid output config: {problems}")
+    elif config in _CONFIGS:
+        chosen_config = _CONFIGS[config]
+        problems = validate_config(chosen_config)
+        if problems:
+            # Our own built-in presets failing validation is a server bug.
+            raise HTTPException(status_code=500, detail=f"Internal config error: {problems}")
+    else:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unknown config '{config}'. Choose: {list(_CONFIGS)} or '{_CONFIGURE_SENTINEL}'.",
+        )
 
     if not files and not github_url:
         raise HTTPException(status_code=400, detail="Upload at least one file or provide a GitHub URL.")
