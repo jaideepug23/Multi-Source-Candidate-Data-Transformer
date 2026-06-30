@@ -396,10 +396,12 @@ _FRONTEND_HTML = """<!doctype html>
     CANONICAL_FIELDS.forEach(function (f, idx) {
       var checkbox = fieldConfigBody.querySelector('.field-include[data-idx="' + idx + '"]');
       if (!checkbox || !checkbox.checked) return;
-      var renameInput = fieldConfigBody.querySelector('.field-rename[data-idx="' + idx + '"]');
       var normSelect = fieldConfigBody.querySelector('.field-normalize[data-idx="' + idx + '"]');
-      var outPath = (renameInput.value || "").trim() || defaultOutputName(f.from) || f.from;
-      var entry = { path: outPath, from: f.from, type: f.type };
+      var entry = {
+      path: defaultOutputName(f.from),
+      from: f.from,
+       type: f.type
+    };
       if (f.from === "candidate_id") entry.required = true;
       if (normSelect.value) entry.normalize = normSelect.value;
       fields.push(entry);
