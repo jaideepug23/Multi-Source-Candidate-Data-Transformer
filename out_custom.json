@@ -1,0 +1,108 @@
+[
+  {
+    "full_name": "Aarav Sharma",
+    "primary_email": "aarav.sharma@nsut.ac.in",
+    "phone": "+919811023456",
+    "skills": [
+      "C++",
+      "Distributed Systems",
+      "Python",
+      "System Design",
+      "Kafka",
+      "Redis"
+    ],
+    "overall_confidence": 1.0
+  },
+  {
+    "full_name": "Rohan Verma",
+    "primary_email": "rohan.verma@sric.iitd.ac.in",
+    "phone": "+919650012345",
+    "skills": [
+      "Python",
+      "Machine Learning",
+      "PyTorch",
+      "NLP"
+    ],
+    "overall_confidence": 1.0
+  },
+  {
+    "full_name": "Priya Nair",
+    "primary_email": "priya.nair@gmail.com",
+    "phone": "+919847012398",
+    "skills": [
+      "JavaScript",
+      "React",
+      "TypeScript",
+      "Css"
+    ],
+    "overall_confidence": 1.0
+  },
+  {
+    "full_name": "Karthik Subramanian",
+    "primary_email": "karthik.s@outlook.com",
+    "phone": "+918904567321",
+    "skills": [
+      "Java",
+      "Spring Boot",
+      "MySQL",
+      "Kafka"
+    ],
+    "overall_confidence": 0.956
+  },
+  {
+    "full_name": "Sneha Reddy",
+    "primary_email": "sneha.reddy@yahoo.com",
+    "phone": "+919912345678",
+    "skills": [
+      "Python",
+      "Pandas",
+      "scikit-learn",
+      "Sql"
+    ],
+    "overall_confidence": 1.0
+  },
+  {
+    "full_name": "Aditya Joshi",
+    "primary_email": "aditya.joshi@protonmail.com",
+    "phone": "+919023456781",
+    "skills": [
+      "C",
+      "Embedded C",
+      "Rtos",
+      "Arm"
+    ],
+    "overall_confidence": 1.0
+  },
+  {
+    "full_name": "Meera Iyer",
+    "primary_email": "meera.iyer@company.in",
+    "phone": "+919876123450",
+    "skills": [
+      "AWS",
+      "Docker",
+      "Kubernetes",
+      "Terraform"
+    ],
+    "overall_confidence": 0.956
+  },
+  {
+    "full_name": "Ishaan Malhotra",
+    "primary_email": "ishaan.malhotra@hotmail.com",
+    "phone": "+919123456780",
+    "skills": [
+      "JavaScript",
+      "Node.js",
+      "MongoDB",
+      "React",
+      "AWS"
+    ],
+    "overall_confidence": 1.0
+  },
+  {
+    "full_name": "Diya Patel",
+    "primary_email": "diya.patel@gmail.com",
+    "phone": null,
+    "skills": null,
+    "overall_confidence": 0.289
+  }
+]

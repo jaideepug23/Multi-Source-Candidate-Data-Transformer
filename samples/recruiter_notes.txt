@@ -1,0 +1,38 @@
+Recruiter Notes — Candidate Sourcing Batch, Bengaluru/Delhi-NCR Tech Hiring
+
+---
+
+Candidate: Aarav Sharma
+Spoke with Aarav over a phone screen on Monday. He's currently a Software
+Development Engineer at Razorpay (joined July 2024 after his internship
+converted to full-time). Strong fundamentals in C++ and distributed
+systems — he walked me through a payment reconciliation service he built
+that handles a few million transactions a day. NSUT grad, computer
+science. He mentioned he's not actively looking but open to the right
+opportunity if it involves more system design ownership. Contact:
+aarav.sharma@nsut.ac.in, +91 98110 23456. Based in Bengaluru.
+
+---
+
+Candidate: Ishaan Malhotra
+Referred by an internal employee. Senior engineer at Myntra leading the
+checkout/payments squad. 4 years experience, strong in Node.js and React,
+comfortable with AWS. DTU graduate. Based out of Gurugram. Said he's
+exploring opportunities for the first time in 2 years, wants to know about
+remote-friendly policies before going further. Phone: 9123456780.
+
+---
+
+Candidate: Priya Nair
+Frontend specialist at Flipkart, 5 years in, led a 3-person team last
+year on a checkout redesign project. NIT Calicut grad. Excellent
+communicator on the call — would be a strong fit for anything client-facing
+too. Currently based in Bengaluru, open to Hyderabad as well.
+
+---
+
+General notes for this batch: most candidates sourced from LinkedIn and
+referrals over the past two weeks. Focus areas were backend/distributed
+systems and frontend/checkout experience for the payments team expansion.
+Several candidates mentioned they prefer not to relocate outside South
+India unless the role is fully remote.

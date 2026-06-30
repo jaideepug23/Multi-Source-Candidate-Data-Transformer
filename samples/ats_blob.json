@@ -1,0 +1,94 @@
+{
+  "applicants": [
+    {
+      "applicantId": "ATS-9001",
+      "applicant": {
+        "fullName": "Aarav Sharma",
+        "email": "aarav.sharma@nsut.ac.in",
+        "phone": "+919811023456",
+        "linkedinUrl": "https://linkedin.com/in/aaravsharma-dev",
+        "githubUrl": "https://github.com/aarav-sharma-dev",
+        "summary": "Software engineer specializing in distributed systems and payment infrastructure at Razorpay.",
+        "yearsOfExperience": 2,
+        "skills": ["C++", "Python", "System Design", "Kafka", "Redis"],
+        "location": {
+          "city": "Bengaluru",
+          "state": "Karnataka",
+          "country": "India"
+        }
+      },
+      "workHistory": [
+        {
+          "company": "Razorpay",
+          "title": "Software Development Engineer",
+          "startDate": "2024-07",
+          "endDate": "Present",
+          "description": "Building core payment gateway services handling millions of transactions daily."
+        },
+        {
+          "company": "Razorpay",
+          "title": "Software Engineer Intern",
+          "startDate": "2024-01",
+          "endDate": "2024-06",
+          "description": "Worked on internal tooling for transaction reconciliation."
+        }
+      ],
+      "education": [
+        {
+          "institution": "Netaji Subhas University of Technology",
+          "degree": "B.Tech",
+          "fieldOfStudy": "Computer Science",
+          "graduationYear": 2024
+        }
+      ]
+    },
+    {
+      "applicantId": "ATS-9002",
+      "applicant": {
+        "fullName": "Ishaan Malhotra",
+        "email": "ishaan.malhotra@hotmail.com",
+        "phone": "9123456780",
+        "linkedinUrl": "https://linkedin.com/in/ishaan-malhotra",
+        "summary": "Full-stack developer with focus on scalable e-commerce platforms.",
+        "yearsOfExperience": 4,
+        "skills": ["JavaScript", "Node.js", "MongoDB", "React", "AWS"],
+        "location": {
+          "city": "Gurugram",
+          "state": "Haryana",
+          "country": "India"
+        }
+      },
+      "workHistory": [
+        {
+          "company": "Myntra",
+          "title": "Senior Software Engineer",
+          "startDate": "Jun 2022",
+          "endDate": "Present",
+          "description": "Leading checkout and payments squad."
+        }
+      ],
+      "education": [
+        {
+          "institution": "Delhi Technological University",
+          "degree": "B.Tech",
+          "fieldOfStudy": "Information Technology",
+          "graduationYear": 2020
+        }
+      ]
+    },
+    {
+      "applicantId": "ATS-9003",
+      "applicant": {
+        "fullName": "Diya Patel",
+        "email": "diya.patel@gmail.com",
+        "phone": null,
+        "summary": "",
+        "yearsOfExperience": null,
+        "skills": [],
+        "location": {}
+      },
+      "workHistory": [],
+      "education": []
+    }
+  ]
+}

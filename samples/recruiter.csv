@@ -1,0 +1,10 @@
+name,email,phone,current_company,title,location,linkedin,skills,years_experience,school,degree,notes
+Aarav Sharma,aarav.sharma@nsut.ac.in,9811023456,Razorpay,Software Development Engineer,"Bengaluru, Karnataka, India",https://linkedin.com/in/aaravsharma-dev,"C++, Python, System Design, Distributed Systems",2,,,Strong DSA fundamentals; referred by team lead
+Rohan Verma,rohan.verma@sric.iitd.ac.in,9650012345,Indian Institute of Technology Delhi,Research Assistant,"New Delhi, Delhi, India",https://linkedin.com/in/rohanverma-iitd,"Python, Machine Learning, PyTorch, NLP",3,Indian Institute of Technology Delhi,M.Tech,Strong publication record in NLP
+Priya Nair,priya.nair@gmail.com,9847012398,Flipkart,Senior Frontend Engineer,"Bengaluru, Karnataka, India",https://linkedin.com/in/priyanair-fe,"JavaScript, React, TypeScript, CSS",5,National Institute of Technology Calicut,B.Tech,Excellent communication; led 3-member team
+Karthik Subramanian,karthik.s@outlook.com,8904567321,Zoho Corporation,Backend Engineer,"Chennai, Tamil Nadu, India",,"Java, Spring Boot, MySQL, Kafka",4,Anna University,B.E.,Open to relocation within India
+Sneha Reddy,sneha.reddy@yahoo.com,9912345678,Swiggy,Data Scientist,"Hyderabad, Telangana, India",https://linkedin.com/in/sneha-reddy-ds,"Python, Pandas, Scikit-Learn, SQL",3,International Institute of Information Technology Hyderabad,M.S.,Published 2 papers on recommendation systems
+Garbage Test Row,,,,,,,,,,,Malformed entry with almost no usable fields - row should degrade gracefully not crash pipeline
+,,,,,,,,,,,Row with no name at all - tests that required full_name correctly drops this candidate
+Aditya Joshi,aditya.joshi@protonmail.com,9023456781,Ola Electric,Embedded Systems Engineer,"Pune, Maharashtra, India",https://linkedin.com/in/adityajoshi-embedded,"C, Embedded C, RTOS, ARM",6,College of Engineering Pune,B.Tech,Ex-Bosch; strong hardware-software interface experience
+Meera Iyer,meera.iyer@company.in,9876123450,Tata Consultancy Services,Cloud Engineer,"Mumbai, Maharashtra, India",,"AWS, Docker, Kubernetes, Terraform",4,Veermata Jijabai Technological Institute,B.Tech,AWS Certified Solutions Architect

@@ -1,0 +1,895 @@
+[
+  {
+    "candidate_id": "recruiter_row0",
+    "full_name": "Aarav Sharma",
+    "emails": [
+      "aarav.sharma@nsut.ac.in"
+    ],
+    "phones": [
+      "+919811023456"
+    ],
+    "location": {
+      "city": "Bengaluru",
+      "region": "Karnataka",
+      "country": "IN"
+    },
+    "links": {
+      "linkedin": "https://linkedin.com/in/aaravsharma-dev",
+      "github": "https://github.com/aarav-sharma-dev",
+      "portfolio": null
+    },
+    "headline": "Software engineer specializing in distributed systems and payment infrastructure at Razorpay.",
+    "years_experience": 2,
+    "skills": [
+      "C++",
+      "Distributed Systems",
+      "Python",
+      "System Design",
+      "Kafka",
+      "Redis"
+    ],
+    "experience": [
+      {
+        "company": "Razorpay",
+        "title": "Software Development Engineer",
+        "start": "2024-07",
+        "end": null,
+        "summary": "Building core payment gateway services handling millions of transactions daily."
+      },
+      {
+        "company": "Razorpay",
+        "title": "Software Engineer Intern",
+        "start": "2024-01",
+        "end": "2024-06",
+        "summary": "Worked on internal tooling for transaction reconciliation."
+      }
+    ],
+    "education": [
+      {
+        "institution": "Netaji Subhas University of Technology",
+        "degree": "B.Tech",
+        "field": "Computer Science",
+        "end_year": 2024
+      }
+    ],
+    "overall_confidence": 1.0,
+    "provenance": [
+      {
+        "field": "full_name",
+        "source": "ats_json",
+        "method": "direct"
+      },
+      {
+        "field": "emails",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "phones",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "location",
+        "source": "ats_json",
+        "method": "normalized"
+      },
+      {
+        "field": "links",
+        "source": "csv",
+        "method": "merged"
+      },
+      {
+        "field": "links",
+        "source": "ats_json",
+        "method": "merged"
+      },
+      {
+        "field": "headline",
+        "source": "ats_json",
+        "method": "direct"
+      },
+      {
+        "field": "years_experience",
+        "source": "ats_json",
+        "method": "direct"
+      },
+      {
+        "field": "skills",
+        "source": "csv",
+        "method": "merged"
+      },
+      {
+        "field": "skills",
+        "source": "ats_json",
+        "method": "merged"
+      },
+      {
+        "field": "experience",
+        "source": "ats_json",
+        "method": "merged"
+      },
+      {
+        "field": "education",
+        "source": "ats_json",
+        "method": "merged"
+      }
+    ]
+  },
+  {
+    "candidate_id": "recruiter_row1",
+    "full_name": "Rohan Verma",
+    "emails": [
+      "rohan.verma@sric.iitd.ac.in"
+    ],
+    "phones": [
+      "+919650012345"
+    ],
+    "location": {
+      "city": "New Delhi",
+      "region": "Delhi",
+      "country": "IN"
+    },
+    "links": {
+      "linkedin": "https://linkedin.com/in/rohanverma-iitd",
+      "github": null,
+      "portfolio": null
+    },
+    "headline": "Strong publication record in NLP",
+    "years_experience": 3,
+    "skills": [
+      "Python",
+      "Machine Learning",
+      "PyTorch",
+      "NLP"
+    ],
+    "experience": [
+      {
+        "company": "Indian Institute of Technology Delhi",
+        "title": "Research Assistant",
+        "start": null,
+        "end": null,
+        "summary": null
+      }
+    ],
+    "education": [
+      {
+        "institution": "Indian Institute of Technology Delhi",
+        "degree": "M.Tech",
+        "field": null,
+        "end_year": null
+      }
+    ],
+    "overall_confidence": 1.0,
+    "provenance": [
+      {
+        "field": "full_name",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "emails",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "phones",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "location",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "links",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "headline",
+        "source": "csv",
+        "method": "inferred"
+      },
+      {
+        "field": "years_experience",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "skills",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "experience",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "education",
+        "source": "csv",
+        "method": "direct"
+      }
+    ]
+  },
+  {
+    "candidate_id": "recruiter_row2",
+    "full_name": "Priya Nair",
+    "emails": [
+      "priya.nair@gmail.com"
+    ],
+    "phones": [
+      "+919847012398"
+    ],
+    "location": {
+      "city": "Bengaluru",
+      "region": "Karnataka",
+      "country": "IN"
+    },
+    "links": {
+      "linkedin": "https://linkedin.com/in/priyanair-fe",
+      "github": null,
+      "portfolio": null
+    },
+    "headline": "Excellent communication; led 3-member team",
+    "years_experience": 5,
+    "skills": [
+      "JavaScript",
+      "React",
+      "TypeScript",
+      "Css"
+    ],
+    "experience": [
+      {
+        "company": "Flipkart",
+        "title": "Senior Frontend Engineer",
+        "start": null,
+        "end": null,
+        "summary": null
+      }
+    ],
+    "education": [
+      {
+        "institution": "National Institute of Technology Calicut",
+        "degree": "B.Tech",
+        "field": null,
+        "end_year": null
+      }
+    ],
+    "overall_confidence": 1.0,
+    "provenance": [
+      {
+        "field": "full_name",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "emails",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "phones",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "location",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "links",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "headline",
+        "source": "csv",
+        "method": "inferred"
+      },
+      {
+        "field": "years_experience",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "skills",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "experience",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "education",
+        "source": "csv",
+        "method": "direct"
+      }
+    ]
+  },
+  {
+    "candidate_id": "recruiter_row3",
+    "full_name": "Karthik Subramanian",
+    "emails": [
+      "karthik.s@outlook.com"
+    ],
+    "phones": [
+      "+918904567321"
+    ],
+    "location": {
+      "city": "Chennai",
+      "region": "Tamil Nadu",
+      "country": "IN"
+    },
+    "links": {
+      "linkedin": null,
+      "github": null,
+      "portfolio": null
+    },
+    "headline": "Open to relocation within India",
+    "years_experience": 4,
+    "skills": [
+      "Java",
+      "Spring Boot",
+      "MySQL",
+      "Kafka"
+    ],
+    "experience": [
+      {
+        "company": "Zoho Corporation",
+        "title": "Backend Engineer",
+        "start": null,
+        "end": null,
+        "summary": null
+      }
+    ],
+    "education": [
+      {
+        "institution": "Anna University",
+        "degree": "B.E.",
+        "field": null,
+        "end_year": null
+      }
+    ],
+    "overall_confidence": 0.956,
+    "provenance": [
+      {
+        "field": "full_name",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "emails",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "phones",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "location",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "headline",
+        "source": "csv",
+        "method": "inferred"
+      },
+      {
+        "field": "years_experience",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "skills",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "experience",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "education",
+        "source": "csv",
+        "method": "direct"
+      }
+    ]
+  },
+  {
+    "candidate_id": "recruiter_row4",
+    "full_name": "Sneha Reddy",
+    "emails": [
+      "sneha.reddy@yahoo.com"
+    ],
+    "phones": [
+      "+919912345678"
+    ],
+    "location": {
+      "city": "Hyderabad",
+      "region": "Telangana",
+      "country": "IN"
+    },
+    "links": {
+      "linkedin": "https://linkedin.com/in/sneha-reddy-ds",
+      "github": null,
+      "portfolio": null
+    },
+    "headline": "Published 2 papers on recommendation systems",
+    "years_experience": 3,
+    "skills": [
+      "Python",
+      "Pandas",
+      "scikit-learn",
+      "Sql"
+    ],
+    "experience": [
+      {
+        "company": "Swiggy",
+        "title": "Data Scientist",
+        "start": null,
+        "end": null,
+        "summary": null
+      }
+    ],
+    "education": [
+      {
+        "institution": "International Institute of Information Technology Hyderabad",
+        "degree": "M.S.",
+        "field": null,
+        "end_year": null
+      }
+    ],
+    "overall_confidence": 1.0,
+    "provenance": [
+      {
+        "field": "full_name",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "emails",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "phones",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "location",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "links",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "headline",
+        "source": "csv",
+        "method": "inferred"
+      },
+      {
+        "field": "years_experience",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "skills",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "experience",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "education",
+        "source": "csv",
+        "method": "direct"
+      }
+    ]
+  },
+  {
+    "candidate_id": "recruiter_row5",
+    "full_name": "Garbage Test Row",
+    "emails": null,
+    "phones": null,
+    "location": {
+      "city": null,
+      "region": null,
+      "country": null
+    },
+    "links": {
+      "linkedin": null,
+      "github": null,
+      "portfolio": null
+    },
+    "headline": "Malformed entry with almost no usable fields - row should degrade gracefully not crash pipeline",
+    "years_experience": null,
+    "skills": null,
+    "experience": null,
+    "education": null,
+    "overall_confidence": 0.189,
+    "provenance": [
+      {
+        "field": "full_name",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "headline",
+        "source": "csv",
+        "method": "inferred"
+      }
+    ]
+  },
+  {
+    "candidate_id": "recruiter_row6",
+    "full_name": null,
+    "emails": null,
+    "phones": null,
+    "location": {
+      "city": null,
+      "region": null,
+      "country": null
+    },
+    "links": {
+      "linkedin": null,
+      "github": null,
+      "portfolio": null
+    },
+    "headline": "Row with no name at all - tests that required full_name correctly drops this candidate",
+    "years_experience": null,
+    "skills": null,
+    "experience": null,
+    "education": null,
+    "overall_confidence": 0.044,
+    "provenance": [
+      {
+        "field": "headline",
+        "source": "csv",
+        "method": "inferred"
+      }
+    ]
+  },
+  {
+    "candidate_id": "recruiter_row7",
+    "full_name": "Aditya Joshi",
+    "emails": [
+      "aditya.joshi@protonmail.com"
+    ],
+    "phones": [
+      "+919023456781"
+    ],
+    "location": {
+      "city": "Pune",
+      "region": "Maharashtra",
+      "country": "IN"
+    },
+    "links": {
+      "linkedin": "https://linkedin.com/in/adityajoshi-embedded",
+      "github": null,
+      "portfolio": null
+    },
+    "headline": "Ex-Bosch; strong hardware-software interface experience",
+    "years_experience": 6,
+    "skills": [
+      "C",
+      "Embedded C",
+      "Rtos",
+      "Arm"
+    ],
+    "experience": [
+      {
+        "company": "Ola Electric",
+        "title": "Embedded Systems Engineer",
+        "start": null,
+        "end": null,
+        "summary": null
+      }
+    ],
+    "education": [
+      {
+        "institution": "College of Engineering Pune",
+        "degree": "B.Tech",
+        "field": null,
+        "end_year": null
+      }
+    ],
+    "overall_confidence": 1.0,
+    "provenance": [
+      {
+        "field": "full_name",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "emails",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "phones",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "location",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "links",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "headline",
+        "source": "csv",
+        "method": "inferred"
+      },
+      {
+        "field": "years_experience",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "skills",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "experience",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "education",
+        "source": "csv",
+        "method": "direct"
+      }
+    ]
+  },
+  {
+    "candidate_id": "recruiter_row8",
+    "full_name": "Meera Iyer",
+    "emails": [
+      "meera.iyer@company.in"
+    ],
+    "phones": [
+      "+919876123450"
+    ],
+    "location": {
+      "city": "Mumbai",
+      "region": "Maharashtra",
+      "country": "IN"
+    },
+    "links": {
+      "linkedin": null,
+      "github": null,
+      "portfolio": null
+    },
+    "headline": "AWS Certified Solutions Architect",
+    "years_experience": 4,
+    "skills": [
+      "AWS",
+      "Docker",
+      "Kubernetes",
+      "Terraform"
+    ],
+    "experience": [
+      {
+        "company": "Tata Consultancy Services",
+        "title": "Cloud Engineer",
+        "start": null,
+        "end": null,
+        "summary": null
+      }
+    ],
+    "education": [
+      {
+        "institution": "Veermata Jijabai Technological Institute",
+        "degree": "B.Tech",
+        "field": null,
+        "end_year": null
+      }
+    ],
+    "overall_confidence": 0.956,
+    "provenance": [
+      {
+        "field": "full_name",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "emails",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "phones",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "location",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "headline",
+        "source": "csv",
+        "method": "inferred"
+      },
+      {
+        "field": "years_experience",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "skills",
+        "source": "csv",
+        "method": "normalized"
+      },
+      {
+        "field": "experience",
+        "source": "csv",
+        "method": "direct"
+      },
+      {
+        "field": "education",
+        "source": "csv",
+        "method": "direct"
+      }
+    ]
+  },
+  {
+    "candidate_id": "ATS-9002",
+    "full_name": "Ishaan Malhotra",
+    "emails": [
+      "ishaan.malhotra@hotmail.com"
+    ],
+    "phones": [
+      "+919123456780"
+    ],
+    "location": {
+      "city": "Gurugram",
+      "region": "Haryana",
+      "country": "IN"
+    },
+    "links": {
+      "linkedin": "https://linkedin.com/in/ishaan-malhotra",
+      "github": null,
+      "portfolio": null
+    },
+    "headline": "Full-stack developer with focus on scalable e-commerce platforms.",
+    "years_experience": 4,
+    "skills": [
+      "JavaScript",
+      "Node.js",
+      "MongoDB",
+      "React",
+      "AWS"
+    ],
+    "experience": [
+      {
+        "company": "Myntra",
+        "title": "Senior Software Engineer",
+        "start": "2022-06",
+        "end": null,
+        "summary": "Leading checkout and payments squad."
+      }
+    ],
+    "education": [
+      {
+        "institution": "Delhi Technological University",
+        "degree": "B.Tech",
+        "field": "Information Technology",
+        "end_year": 2020
+      }
+    ],
+    "overall_confidence": 1.0,
+    "provenance": [
+      {
+        "field": "full_name",
+        "source": "ats_json",
+        "method": "direct"
+      },
+      {
+        "field": "emails",
+        "source": "ats_json",
+        "method": "direct"
+      },
+      {
+        "field": "phones",
+        "source": "ats_json",
+        "method": "normalized"
+      },
+      {
+        "field": "links",
+        "source": "ats_json",
+        "method": "direct"
+      },
+      {
+        "field": "headline",
+        "source": "ats_json",
+        "method": "direct"
+      },
+      {
+        "field": "years_experience",
+        "source": "ats_json",
+        "method": "direct"
+      },
+      {
+        "field": "skills",
+        "source": "ats_json",
+        "method": "normalized"
+      },
+      {
+        "field": "experience",
+        "source": "ats_json",
+        "method": "normalized"
+      },
+      {
+        "field": "education",
+        "source": "ats_json",
+        "method": "normalized"
+      },
+      {
+        "field": "location",
+        "source": "ats_json",
+        "method": "normalized"
+      }
+    ]
+  },
+  {
+    "candidate_id": "ATS-9003",
+    "full_name": "Diya Patel",
+    "emails": [
+      "diya.patel@gmail.com"
+    ],
+    "phones": null,
+    "location": {
+      "city": null,
+      "region": null,
+      "country": null
+    },
+    "links": {
+      "linkedin": null,
+      "github": null,
+      "portfolio": null
+    },
+    "headline": null,
+    "years_experience": null,
+    "skills": null,
+    "experience": null,
+    "education": null,
+    "overall_confidence": 0.289,
+    "provenance": [
+      {
+        "field": "full_name",
+        "source": "ats_json",
+        "method": "direct"
+      },
+      {
+        "field": "emails",
+        "source": "ats_json",
+        "method": "direct"
+      }
+    ]
+  }
+]
